@@ -1,27 +1,28 @@
 import 'package:get/get.dart';
-import 'package:transport_app/app/routes/app_routes.dart';
+import 'package:transport_app/routes/app_routes.dart';
 
 // Controllers
-import 'package:transport_app/app/controllers/auth_controller.dart';
-import 'package:transport_app/app/controllers/map_controller.dart';
-import 'package:transport_app/app/controllers/trip_controller.dart';
-import 'package:transport_app/app/controllers/wallet_controller.dart';
+import 'package:transport_app/controllers/auth_controller.dart';
+import 'package:transport_app/controllers/map_controller.dart';
+import 'package:transport_app/controllers/trip_controller.dart';
+ import 'package:transport_app/controllers/wallet_controller.dart';
 
 // Views
-import 'package:transport_app/app/views/splash_view.dart';
-import 'package:transport_app/app/views/auth/user_type_selection_view.dart';
-import 'package:transport_app/app/views/auth/phone_auth_view.dart';
-import 'package:transport_app/app/views/auth/verify_otp_view.dart';
-import 'package:transport_app/app/views/auth/complete_profile_view.dart';
+import 'package:transport_app/views/splash_view.dart';
+import 'package:transport_app/views/auth/user_type_selection_view.dart';
+import 'package:transport_app/views/auth/phone_auth_view.dart';
+import 'package:transport_app/views/auth/verify_otp_view.dart';
+import 'package:transport_app/views/auth/complete_profile_view.dart';
 
 // Rider Views
-import 'package:transport_app/app/views/rider/rider_home_view.dart';
-import 'package:transport_app/app/views/rider/rider_wallet_view.dart';
-import 'package:transport_app/app/views/rider/add_balance_view.dart';
-import 'package:transport_app/app/views/rider/trip_tracking_view.dart';
+import 'package:transport_app/views/rider/rider_home_view.dart';
+import 'package:transport_app/views/rider/rider_wallet_view.dart';
+import 'package:transport_app/views/rider/add_balance_view.dart';
+import 'package:transport_app/views/rider/trip_tracking_view.dart';
 
 // Driver Views
-import 'package:transport_app/app/views/driver/driver_home_view.dart';
+import 'package:transport_app/views/driver/driver_home_view.dart';
+import 'package:transport_app/routes/app_routes.dart';
 import 'package:uber_app/routes/app_routes.dart';
 
 class AppPages {

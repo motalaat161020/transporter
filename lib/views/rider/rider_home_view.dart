@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
-import 'package:transport_app/app/controllers/map_controller.dart';
-import 'package:transport_app/app/controllers/trip_controller.dart';
-import 'package:transport_app/app/controllers/auth_controller.dart';
-import 'package:transport_app/app/routes/app_routes.dart';
-import 'package:transport_app/app/services/location_service.dart';
+import 'package:transport_app/controllers/auth_controller.dart';
+import 'package:transport_app/controllers/trip_controller.dart';
+ 
+import 'package:transport_app/models/trip_model.dart';
 
 class RiderHomeView extends StatelessWidget {
   final MapController mapController = Get.find();

@@ -90,7 +90,7 @@ class MapController extends GetxController {
     if (!isMapReady.value) return;
     
     try {
-      mapController.move(location, zoom);
+      mapController.moveToLocation(location, zoom: zoom);
       mapCenter.value = location;
       mapZoom.value = zoom;
     } catch (e) {
@@ -152,7 +152,8 @@ class MapController extends GetxController {
         point: location,
         width: 40.0,
         height: 40.0,
-        builder: (ctx) => Container(
+      //  builder: (ctx) => Container(
+        child: Container(
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: Colors.blue,
@@ -187,7 +188,8 @@ class MapController extends GetxController {
         point: location,
         width: 50.0,
         height: 50.0,
-        builder: (ctx) => Column(
+        // builder: (ctx) => Column(
+child:   Column(
           children: [
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
@@ -245,7 +247,8 @@ class MapController extends GetxController {
         point: location,
         width: 60.0,
         height: 60.0,
-        builder: (ctx) => Container(
+       // builder: (ctx) => Container(
+        child:  Container(
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: Colors.green,
@@ -279,16 +282,17 @@ class MapController extends GetxController {
     if (routePoints.isEmpty) return;
     
     // مسح المسارات السابقة
-    polylines.removeWhere((polyline) => polyline.tag == 'trip_route');
-    
+    // Remove previous trip route polyline by checking a custom condition (e.g., color and strokeWidth)
+    polylines.removeWhere((polyline) =>
+        polyline.color == Colors.blue && polyline.strokeWidth == 4.0);
+
     // إضافة المسار الجديد
     polylines.add(
       Polyline(
-        tag: 'trip_route',
         points: routePoints,
         color: Colors.blue,
         strokeWidth: 4.0,
-        pattern: const StrokePattern.solid(),
+        // pattern: const StrokePattern.solid(),
       ),
     );
     
@@ -322,9 +326,18 @@ class MapController extends GetxController {
     );
     
     try {
-      mapController.fitCamera(
-        CameraFit.bounds(bounds: bounds),
-      );
+      mapController._fitBoundsToRoute(points);
+      // mapController.fitBounds(
+      //   bounds,
+      //   options: FitBoundsOptions(
+      //     padding: EdgeInsets.all(20),
+      //     maxZoom: 18.0,
+      //     inside: true,
+      //     forceIntegerZoomLevel: true,
+      //   ),
+      // );
+      // mapCenter.value = bounds.center;
+
     } catch (e) {
       print('خطأ في تعديل حدود الخريطة: $e');
     }
@@ -352,7 +365,7 @@ class MapController extends GetxController {
         point: trip.pickupLocation.latLng,
         width: 40.0,
         height: 40.0,
-        builder: (ctx) => Container(
+                child:  Container(
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: Colors.green,
@@ -370,7 +383,7 @@ class MapController extends GetxController {
         point: trip.destinationLocation.latLng,
         width: 40.0,
         height: 40.0,
-        builder: (ctx) => Container(
+                child: Container(
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: Colors.red,
